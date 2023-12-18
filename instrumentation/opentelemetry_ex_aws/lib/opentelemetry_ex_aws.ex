@@ -67,5 +67,8 @@ defmodule OpentelemetryExAws do
     OpentelemetryTelemetry.end_telemetry_span(@tracer_id, metadata)
   end
 
-  defp get_attributes(%{operation: "DynamoDB" <> _rest} = metadata), do: DynamoDB.get_attributes(metadata)
+  defp get_attributes(%{operation: "DynamoDB" <> _rest} = metadata),
+    do: DynamoDB.get_attributes(metadata)
+
+  defp get_attributes(%{operation: _operation} = metadata), do: %{}
 end
